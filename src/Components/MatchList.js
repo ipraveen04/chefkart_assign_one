@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import MatchCard from './MatchCard'
+import { data } from '../api/data'
+
+
 function MatchList() {
-    const [match, setMatch] = useState([])
-
-    const api = 'http://localhost:5050/data'
-    const cardData = () => {
-        axios.get(api)
-            .then(res => {
-                console.log(res.data);
-                setMatch(res.data)
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    useEffect(() => {
-        cardData();
-    }, [])
     return (
         <>
             <div className="container">
-                <div className="row">
-                    {match.map((ele, index) => {
+                <div className="row mt-5">
+                    {data.map((ele, index) => {
                         return (
 
                             <MatchCard key={index}
